@@ -1,0 +1,11 @@
+GelirTask 
+
+Projenin amacı: Bu proje Kullanıcıya hesap yönetimi ve hesap hareketlerini takip etme imkanı tanır. Kullanıcı hesap oluşturabilir, güncelleyebilir, hesapları listleyebilir, birden fazla hesap arasından istediği hesabı görüntüleyebilir, seçtiği hesaba para ekleyebilir veya çekebilir ayrıca seçtiği hesabı silebilir. 
+
+Proje temelde springboot üzerinden MVC yapısı ile oluşturulmuştur. Controller üzerinden veri yönetimi yapılır. Service katmanında ise projenin iş mantığı ve iş kuralları uygulanır. Ayrıca Service katmanındaki HesapServiceHareketImpl ve HesapServiceImpl için iki farklı interface oluşturulmuştur. Bu sayede veri güvenliği arttırılmıştır. Ayrıca Service katmanında işleme tabi tutulacak olan entity ler için Dto sınıfları oluşturulmuştur bu sayede projenin güvenliği daha da arttırılmıştır. Repository katmanında ise iki farklı repository oluşturulmuştur. Bunlardan HesapRepository veritabanında hesap tablosu üzerinden işlemler yaparken, HesapHareketRepository ise HesapRepository’e bağımlı olarak para ekleme ve para çekme işlemlerinin kayıtlarını tutar. Ayrıca projeye, postman’dan yapılan testlerin hata kontrolleri için exception paketi de eklenmiştir.  Projeye ayrıca swagger entegre edilmiştir. Bunun haricinde proje Java 17 ile yazılmıştır, Springboot 3.4 sürümünü kullanmaktadır ve lombok da bağımlılıklara eklenmiştir. Veritabanı kısmında iki Repository de JpaRepository den extend edilmiştir. Mapstruct yapısı da proje dahilinde kullanılmıştır. Proje ayrıca maven ve PostgreSQL ile çalışmaktadır ve projede liquebase kullanılmıştır. Projenin test aşamasında ise Unit Test ve Entegrasyon Testleri yapılmıştır. Bu testler için h2 kullanılmıştır. Bu testler metodların ve genel yapının haricinde bazı iş kurallarını da test etmektedir. Bunlar; 
+
+1. Bir kimlik numarasına ve hesap turune ait tek kayıt olabilir.
+2. Bakiye her hesap hareketinde güncellenmelidir.
+3. Bakiye 0'ın altına düşümez.
+4. Bakiye en fazla 9.999.999 olabilir. 
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="borabaskan">
+        <createTable tableName="hesap">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="hesap_sahip_kimlik_no" type="numeric(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hesap_sahip_ad" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hesap_sahip_soyad" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hesap_turu" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bakiye" type="numeric(9,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="borabaskan">
+    <createTable tableName="hesap_hareketi">
+        <column name="id" type="uuid">
+            <constraints primaryKey="true"/>
+        </column>
+        <column name="hesap_id" type="uuid" />
+        <column name="islem_tarihi" type="timestamp" />
+        <column name="hareket_turu" type="varchar(20)">
+            <constraints nullable="false"/>
+        </column>
+        <column name="miktar" type="numeric(9,2)">
+            <constraints nullable="false"/>
+        </column>
+    </createTable>
+</changeSet>
+</databaseChangeLog>
